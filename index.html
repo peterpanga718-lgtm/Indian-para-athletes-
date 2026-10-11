@@ -30,12 +30,12 @@
     .section-kicker { font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; }
     h2 { margin:8px 0 25px; font-size:clamp(25px,3vw,38px); }
     .cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-    .card { background:white; border:1px solid #e0e0de; box-shadow:0 8px 24px #00000008; display:flex; flex-direction:column; min-height:260px; }
-    .card-top { background:#161719; color:white; padding:22px; min-height:110px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
-    .athlete-photo { width:100%; height:190px; object-fit:cover; display:block; background:#ddd; }
+    .card { background:white; border:1px solid #e0e0de; box-shadow:0 8px 24px #00000008; display:flex; flex-direction:column; min-height:520px; }
+    .card-top { background:#161719; color:white; padding:18px; min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .athlete-photo { width:100%; height:320px; object-fit:cover; display:block; background:#ddd; }
     .photo-credit { font-size:11px; color:#666; line-height:1.5; margin-top:10px; }
     .card-top .emoji { font-size:44px; }
-    .card-body { padding:20px; display:flex; flex-direction:column; flex:1; }
+    .card-body { padding:16px; display:flex; flex-direction:column; flex:1; }
     .card h3 { margin:0 0 8px; font-size:21px; }
     .sport { color:#555; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
     .card p { line-height:1.6; color:#444; font-size:14px; flex:1; }
@@ -51,15 +51,19 @@
     .quote blockquote { font-size:clamp(22px,3vw,36px); font-weight:700; line-height:1.35; margin:0 auto 12px; max-width:850px; }
     .quote p { color:#cfcfcf; }
     .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .gallery div { background:linear-gradient(135deg,#17181a,#4a4b4d); color:white; min-height:130px; padding:18px; display:flex; align-items:end; font-weight:700; }
+    .gallery div { background:linear-gradient(135deg,#17181a,#4a4b4d); color:white; min-height:180px; padding:18px; display:flex; align-items:end; font-weight:700; }
     .contact { background:#e8e8e5; }
     .contact a { font-weight:700; }
     footer { background:#090a0b; color:#ddd; padding:25px 5%; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12px; }
     .note { font-size:12px; color:#666; line-height:1.6; }
-    dialog { border:0; border-radius:8px; padding:28px; max-width:520px; width:calc(100% - 30px); box-shadow:0 20px 80px #0007; }
+    dialog { border:0; border-radius:12px; padding:0; max-width:700px; width:calc(100% - 20px); box-shadow:0 20px 80px #0007; background:#fff; overflow:hidden; }
     dialog::backdrop { background:#0009; }
-    dialog h3 { margin-top:0; }
-    .close { float:right; border:0; background:#eee; padding:8px 12px; cursor:pointer; }
+    .dialog-inner { display:flex; flex-direction:column; }
+    .dialog-image { width:100%; height:260px; object-fit:cover; display:block; background:#ddd; }
+    .dialog-body { padding:22px 24px 26px; }
+    .dialog-body h3 { margin:0 0 10px; font-size:28px; }
+    .dialog-body p { margin:0 0 12px; font-size:15px; line-height:1.8; color:#333; }
+    .close { position:absolute; right:14px; top:12px; border:0; background:#fff; border-radius:999px; padding:8px 12px; cursor:pointer; }
     @media(max-width:760px) {
       .topbar { align-items:flex-start; flex-direction:column; }
       nav { justify-content:flex-start; gap:12px; }
@@ -69,8 +73,11 @@
       .about-grid { grid-template-columns:1fr; }
       .stats { grid-template-columns:1fr 1fr 1fr; }
       .gallery { grid-template-columns:1fr 1fr; }
+      .athlete-photo { height:280px; }
+      .card { min-height:480px; }
+      .dialog-image { height:220px; }
     }
-    @media(max-width:420px) { .brand { font-size:13px; } nav a { font-size:12px; } .stats { grid-template-columns:1fr; } }
+    @media(max-width:420px) { .brand { font-size:13px; } nav a { font-size:12px; } .stats { grid-template-columns:1fr; } .athlete-photo { height:240px; } }
   </style>
 </head>
 <body>
@@ -128,7 +135,7 @@
         <article class="card">
           <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg" alt="Indian para-archer Sheetal Devi" loading="lazy">
           <div class="card-top"><span class="emoji">🏹</span><span>06 / PARA ARCHERY</span></div>
-          <div class="card-body"><h3>Sheetal Devi</h3><div class="sport">Para archery</div><p>Indian para-archer Sheetal Devi won bronze in the women’s individual compound open event at the Paris 2024 Paralympic Games.</p><button class="details" data-athlete="sheetal">Read her story ↗</button></div>
+          <div class="card-body"><h3>Sheetal Devi</h3><div class="sport">Para archery</div><p>Indian para-archer Sheetal Devi won bronze in the women's individual compound open event at the Paris 2024 Paralympic Games.</p><button class="details" data-athlete="sheetal">Read her story ↗</button></div>
         </article>
       </div>
       <p class="note">Learning project: confirm biographies, event categories and medal details against official Paralympic or national sports sources before submitting or publishing. Athlete profiles can be expanded with verified photos and sources.</p>
@@ -173,28 +180,69 @@
   <footer><span>🏃 INDIAN PARA-ATHLETES · A project by Peter</span><span>Made as an educational project · © <span id="year"></span></span></footer>
 
   <dialog id="story-dialog">
-    <button class="close" id="close-dialog" aria-label="Close">Close ✕</button>
-    <h3 id="dialog-title">Athlete story</h3><p id="dialog-text"></p>
-    <p class="note">Before publishing, verify details using official sources.</p>
+    <div class="dialog-inner">
+      <button class="close" id="close-dialog" aria-label="Close">Close ✕</button>
+      <img id="dialog-image" class="dialog-image" src="" alt="Athlete portrait">
+      <div class="dialog-body">
+        <h3 id="dialog-title">Athlete story</h3>
+        <p id="dialog-text"></p>
+        <p class="note">Before publishing, verify details using official sources.</p>
+      </div>
+    </div>
   </dialog>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
     const stories = {
-      avani: ['Avani Lekhara', 'Avani Lekhara is an Indian para shooter. At Tokyo 2020, she won gold in the women’s 10m air rifle standing SH1 event and became the first Indian woman to win a Paralympic gold medal. Verify event and medal details with official Paralympic records before final publication.'],
-      sumit: ['Sumit Antil', 'Sumit Antil is an Indian para javelin thrower. He won gold at Tokyo 2020 and Paris 2024. His performances have made him one of India’s leading para-athletes.'],
-      mariyappan: ['Mariyappan Thangavelu', 'Mariyappan Thangavelu is an Indian para high jumper who won gold at Rio 2016 and silver at Tokyo 2020.'],
-      deepa: ['Deepa Malik', 'Deepa Malik is a pioneering Indian para-athlete who won silver in shot put at Rio 2016, becoming the first Indian woman to win a Paralympic medal.'],
-      bhavina: ['Bhavina Patel', 'Bhavina Patel is an Indian para table-tennis player who won silver in women’s singles at Tokyo 2020.'],
-      sheetal: ['Sheetal Devi', 'Sheetal Devi is an Indian para-archer who won bronze in the women’s individual compound open event at the Paris 2024 Paralympic Games.']
+      avani: {
+        name: 'Avani Lekhara',
+        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Avani_Lekhara_in_2022.jpg',
+        story: 'Avani Lekhara is one of India’s most celebrated para-athletes, renowned for her precision, discipline and composure under pressure. Born in 2001 in Jaipur, Rajasthan, she grew up with a passion for shooting and a commitment to excellence. At the Tokyo 2020 Paralympic Games, she made history by winning gold in the women’s 10m air rifle standing SH1 event, becoming the first Indian woman to win a Paralympic gold medal. Her success was not accidental—it came from years of intense training, technical discipline, and a calm mind that never stopped believing in her potential. Beyond medals, Avani has become a symbol of hope and inspiration for young athletes across India, especially women who dream of rising in sport despite barriers. Her story is a reminder that excellence is built through effort, patience and resilience.'
+      },
+      sumit: {
+        name: 'Sumit Antil',
+        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sumit_Antil_2.jpg',
+        story: 'Sumit Antil is one of India’s leading para-athletes and a standout figure in para javelin. From a young age, he showed natural athletic ability and an instinct for performance under pressure. His rise in the sport was shaped by his determination to train harder, refine his technique and challenge limitations that many people underestimated. At the Tokyo 2020 Paralympic Games, he claimed gold and emerged as a world-class athlete, setting new standards for Indian para athletics. He later went on to set world records and continue dominating the sport on the international stage. Sumit’s journey represents what can happen when talent is combined with disciplined effort and a refusal to accept limits.'
+      },
+      mariyappan: {
+        name: 'Mariyappan Thangavelu',
+        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mariyappan_Thangavelu.jpg',
+        story: 'Mariyappan Thangavelu is one of the most iconic para-athletes in Indian sport. A high jumper by discipline, he made history by winning gold at the Rio 2016 Paralympic Games, an achievement that sent a powerful message across the country about the value of para-sport. His journey has always been defined by grit, focus and unwavering belief. He has competed with courage at the highest level and has become a role model for many young athletes who look at sport as a path toward dignity, confidence and global recognition. Mariyappan’s story is not only about medals—it is about resilience, discipline and carrying the hopes of a generation.'
+      },
+      deepa: {
+        name: 'Deepa Malik',
+        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Deepa_Malik.jpg',
+        story: 'Deepa Malik is a pioneering force in Indian para-sport and a powerful symbol of strength, leadership and perseverance. She is best known for winning silver in shot put at the Rio 2016 Paralympic Games, making her the first Indian woman to win a Paralympic medal. Her success was built on years of training, self-belief and determination to challenge the social and physical barriers that many women face in sport. Beyond her athletic achievements, Deepa has become a visible advocate for inclusion, representation and equal opportunity in para-sport. Her life story shows that sports can transform identity and help build new pathways for recognition, confidence and empowerment.'
+      },
+      bhavina: {
+        name: 'Bhavina Patel',
+        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Smt._Bhavina_Patel_Table_Tennis_medalist.jpg',
+        story: 'Bhavina Patel has become one of the most inspiring names in Indian para table tennis. Her rise in the sport reflects skill, composure and the determination to perform at the highest level. At the Tokyo 2020 Paralympic Games, she won silver in the women’s singles event, earning widespread recognition and placing para table tennis firmly in the spotlight in India. Her achievement helped illustrate how discipline and technical mastery can transform a sport into a symbol of national pride. Bhavina’s growth as an athlete has also inspired many young players to believe that excellence is possible even when the path is difficult.'
+      },
+      sheetal: {
+        name: 'Sheetal Devi',
+        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg',
+        story: 'Sheetal Devi is a rising star in Indian para archery and a powerful example of talent shaped by dedication. Her path in sport reflects the strength of people who continue to train and compete despite additional barriers. At the Paris 2024 Paralympic Games, she won bronze in the women’s individual compound open event, adding another milestone to her sporting journey. Her style, accuracy and calm composure have impressed viewers, coaches and fans alike. Sheetal is part of a new wave of Indian para-athletes who are elevating the profile of para-sport and showing that the next generation of champions is already emerging.'
+      }
     };
+
     const dialog = document.getElementById('story-dialog');
-    document.querySelectorAll('[data-athlete]').forEach(button => button.addEventListener('click', () => {
-      const story = stories[button.dataset.athlete];
-      document.getElementById('dialog-title').textContent = story[0];
-      document.getElementById('dialog-text').textContent = story[1];
-      dialog.showModal();
-    }));
+    const dialogImage = document.getElementById('dialog-image');
+    const dialogTitle = document.getElementById('dialog-title');
+    const dialogText = document.getElementById('dialog-text');
+
+    document.querySelectorAll('[data-athlete]').forEach(button => {
+      button.addEventListener('click', () => {
+        const athlete = stories[button.dataset.athlete];
+        dialogImage.src = athlete.image;
+        dialogImage.alt = athlete.name;
+        dialogTitle.textContent = athlete.name;
+        dialogText.textContent = athlete.story;
+        dialog.showModal();
+      });
+    });
+
     document.getElementById('close-dialog').addEventListener('click', () => dialog.close());
   </script>
 </body>
