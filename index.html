@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Premium modern showcase of Indian para-athletes and their inspiring journeys." />
+  <meta name="description" content="A premium, cinematic showcase of Indian para-athletes and their achievements." />
   <title>Indian Para-Athletes</title>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --bg-2: #eef3ff;
-      --panel: rgba(255,255,255,0.72);
-      --card: #ffffff;
-      --card-2: #f8f9ff;
-      --ink: #131a2f;
-      --ink-2: #42506b;
-      --muted: #6d7890;
-      --line: rgba(19, 26, 47, 0.08);
-      --accent: #5f5ce9;
-      --accent-2: #8b5cf6;
-      --accent-3: #ff9f43;
-      --success: #1faa6d;
-      --shadow: 0 22px 60px rgba(31, 42, 74, 0.12);
+      --bg: #0c0d12;
+      --bg-2: #121821;
+      --panel: rgba(17, 21, 31, 0.8);
+      --panel-2: rgba(25, 30, 39, 0.9);
+      --card: #131a25;
+      --card-2: #1a2331;
+      --ink: #f3f4f7;
+      --ink-2: #dfe4ef;
+      --muted: #a8afbe;
+      --gold: #d9b36c;
+      --gold-2: #f0d9a0;
+      --gold-3: #b8893d;
+      --line: rgba(217, 179, 108, 0.18);
+      --shadow: 0 26px 80px rgba(0,0,0,0.38);
       --radius: 24px;
+      --success: #7fd6a6;
     }
 
     * { box-sizing: border-box; }
@@ -29,8 +30,11 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      background:
+        radial-gradient(circle at top left, rgba(217,179,108,0.08), transparent 32%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       color: var(--ink);
+      line-height: 1.6;
     }
 
     img { max-width: 100%; display: block; }
@@ -38,25 +42,25 @@
     button, input, textarea { font: inherit; }
 
     .container {
-      width: min(1200px, calc(100% - 32px));
+      width: min(1220px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(12, 17, 28, 0.82);
+      z-index: 40;
+      background: rgba(10, 12, 17, 0.78);
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
     }
 
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
       gap: 18px;
+      padding: 16px 0;
     }
 
     .brand {
@@ -64,35 +68,35 @@
       align-items: center;
       gap: 12px;
       color: white;
-      font-weight: 800;
-      letter-spacing: 0.10em;
+      font-weight: 900;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      font-size: 0.82rem;
+      font-size: 0.74rem;
       white-space: nowrap;
     }
 
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #fbbf24, #fb7185);
-      font-size: 1.3rem;
-      box-shadow: 0 12px 26px rgba(251, 113, 133, 0.35);
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), #fff1bf);
+      color: #111;
+      box-shadow: 0 12px 26px rgba(217, 179, 108, 0.32);
+      font-size: 1.4rem;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
       justify-content: flex-end;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 22px;
     }
 
     .nav-links a {
-      color: rgba(255,255,255,0.8);
-      font-size: 0.92rem;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.9rem;
       transition: color 0.2s ease;
     }
 
@@ -101,22 +105,24 @@
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #0b1020 0%, #15213f 28%, #1d2a52 42%, #5544a5 100%);
-      color: white;
-      padding: 64px 0 42px;
+      background:
+        linear-gradient(125deg, rgba(7,7,12,0.89), rgba(18,24,33,0.78)),
+        url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      padding: 76px 0 52px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      width: 460px;
-      height: 460px;
+      width: 440px;
+      height: 440px;
       right: -90px;
-      top: -80px;
+      top: -40px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 0 0 30px rgba(255,255,255,0.025);
+      background: rgba(217,179,108,0.08);
+      border: 1px solid rgba(217,179,108,0.2);
+      box-shadow: 0 0 0 28px rgba(217,179,108,0.03), 0 0 0 58px rgba(255,255,255,0.02);
       transform: rotate(18deg);
     }
 
@@ -126,36 +132,37 @@
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
-      gap: 28px;
+      gap: 42px;
     }
 
     .eyebrow {
       display: inline-block;
-      padding: 9px 14px;
+      border: 1px solid rgba(217,179,108,0.3);
+      background: rgba(217,179,108,0.07);
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      padding: 8px 14px;
       font-size: 0.72rem;
-      color: rgba(255,255,255,0.82);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-2);
       margin-bottom: 18px;
+      font-weight: 700;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(3rem, 6vw, 6rem);
-      line-height: 0.96;
-      letter-spacing: -0.075em;
-      max-width: 680px;
+      font-size: clamp(3rem, 6vw, 6.2rem);
+      line-height: 0.94;
+      letter-spacing: -0.08em;
+      max-width: 720px;
     }
 
     .hero-copy p {
       max-width: 620px;
+      color: rgba(255,255,255,0.8);
       font-size: 1.08rem;
       line-height: 1.8;
-      color: rgba(255,255,255,0.8);
-      margin: 22px 0 26px;
+      margin: 22px 0 28px;
     }
 
     .hero-actions {
@@ -167,15 +174,15 @@
 
     .btn {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 24px;
       border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       border: 1px solid transparent;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
     .btn:hover {
@@ -183,34 +190,34 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent-3), #ff7a4d);
-      color: #111827;
-      box-shadow: 0 16px 30px rgba(255, 159, 67, 0.35);
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #121212;
+      box-shadow: 0 14px 32px rgba(217, 179, 108, 0.35);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
       color: white;
-      border-color: rgba(255,255,255,0.16);
     }
 
     .hero-visual {
       display: grid;
       place-items: center;
-      min-height: 420px;
+      min-height: 430px;
     }
 
     .hero-portrait {
       position: relative;
-      width: min(420px, 90%);
+      width: min(450px, 92%);
       aspect-ratio: 1;
-      border-radius: 32px;
+      border-radius: 30px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 28px 60px rgba(8, 12, 22, 0.4);
-      background-image: linear-gradient(180deg, rgba(7,10,17,0.15), rgba(7,10,17,0.28)), url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80');
-      background-size: cover;
-      background-position: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.42)),
+        url('https://images.unsplash.com/photo-1541534401786-2077eed87a74?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+      box-shadow: var(--shadow);
       transform: rotate(-4deg);
     }
 
@@ -218,99 +225,179 @@
       content: "";
       position: absolute;
       inset: 14px;
-      border: 1px solid rgba(255,255,255,0.24);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 24px;
     }
 
     .stats-bar {
       position: relative;
       z-index: 3;
-      top: -16px;
+      top: -12px;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
       padding: 18px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(19, 25, 35, 0.8);
       border: 1px solid var(--line);
+      border-radius: 22px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      margin-bottom: 8px;
+      backdrop-filter: blur(16px);
     }
 
     .stat {
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(246,248,255,0.9));
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(217,179,108,0.04));
+      border: 1px solid rgba(255,255,255,0.04);
       border-radius: 18px;
       padding: 20px 12px;
       text-align: center;
-      border: 1px solid rgba(12, 17, 28, 0.04);
     }
 
     .stat strong {
       display: block;
       font-size: clamp(1.8rem, 3vw, 2.8rem);
-      color: var(--accent);
+      color: var(--gold-2);
       line-height: 1;
       margin-bottom: 8px;
     }
 
     .stat span {
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
     }
 
-    section { padding: 36px 0 40px; }
+    section {
+      padding: 64px 0 32px;
+    }
 
     .section-head {
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .kicker {
       display: inline-block;
       margin-bottom: 12px;
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--gold-2);
       font-weight: 800;
     }
 
     h2 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
       letter-spacing: -0.06em;
       line-height: 1.08;
     }
 
+    .spotlight {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .spotlight-main,
+    .spotlight-side,
+    .panel,
+    .quote-box,
+    .form-box {
+      background: rgba(19, 26, 37, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .spotlight-main {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1541534401786-2077eed87a74?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    }
+
+    .spotlight-main .content {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+    }
+
+    .spotlight-main h3 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.06em;
+    }
+
+    .spotlight-main p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+    }
+
+    .spotlight-side {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .mini-stat {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--gold-2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .athlete-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
     .athlete-card {
       position: relative;
-      min-height: 470px;
+      min-height: 500px;
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow);
       border: 1px solid var(--line);
+      box-shadow: var(--shadow);
       background-size: cover;
       background-position: center;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .athlete-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 28px 60px rgba(31, 42, 74, 0.18);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.42);
     }
 
-    .athlete-card:nth-child(1) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Avani_Lekhara_in_2022.jpg'); }
-    .athlete-card:nth-child(2) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Sumit_Antil_2.jpg'); }
-    .athlete-card:nth-child(3) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Mariyappan_Thangavelu.jpg'); }
-    .athlete-card:nth-child(4) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Deepa_Malik.jpg'); }
-    .athlete-card:nth-child(5) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Smt._Bhavina_Patel_Table_Tennis_medalist.jpg'); }
-    .athlete-card:nth-child(6) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg'); }
+    .athlete-card:nth-child(1) { background-image: linear-gradient(180deg, rgba(10,12,18,0.08), rgba(10,12,18,0.75)), url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80'); }
+    .athlete-card:nth-child(2) { background-image: linear-gradient(180deg, rgba(10,12,18,0.08), rgba(10,12,18,0.75)), url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=900&q=80'); }
+    .athlete-card:nth-child(3) { background-image: linear-gradient(180deg, rgba(10,12,18,0.08), rgba(10,12,18,0.75)), url('https://images.unsplash.com/photo-1541534401786-2077eed87a74?auto=format&fit=crop&w=900&q=80'); }
+    .athlete-card:nth-child(4) { background-image: linear-gradient(180deg, rgba(10,12,18,0.08), rgba(10,12,18,0.75)), url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80'); }
+    .athlete-card:nth-child(5) { background-image: linear-gradient(180deg, rgba(10,12,18,0.08), rgba(10,12,18,0.75)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80'); }
+    .athlete-card:nth-child(6) { background-image: linear-gradient(180deg, rgba(10,12,18,0.08), rgba(10,12,18,0.75)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80'); }
 
     .card-overlay {
       position: absolute;
@@ -319,28 +406,28 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 22px 20px 18px;
-      background: linear-gradient(180deg, rgba(10,16,24,0.08), rgba(10,16,24,0.74));
+      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
     }
 
     .medal {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       margin-bottom: 8px;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
     }
 
     .badge {
       display: inline-flex;
       align-self: flex-start;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.08);
       color: white;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
     .athlete-card h3 {
@@ -351,9 +438,9 @@
     }
 
     .sport-tag {
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.8);
       font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 10px;
@@ -362,29 +449,26 @@
     .athlete-card p {
       margin: 0 0 18px;
       font-size: 0.96rem;
+      color: rgba(255,255,255,0.82);
       line-height: 1.65;
-      color: rgba(255,255,255,0.8);
     }
 
     .read-more {
       display: inline-flex;
-      width: fit-content;
       align-items: center;
-      gap: 8px;
-      margin-top: auto;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.08);
-      color: white;
+      justify-content: center;
+      width: fit-content;
       padding: 10px 14px;
       border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: white;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.2s ease;
     }
 
-    .read-more:hover {
-      background: rgba(255,255,255,0.12);
-    }
+    .read-more:hover { background: rgba(255,255,255,0.12); }
 
     .about-grid {
       display: grid;
@@ -393,22 +477,16 @@
       align-items: stretch;
     }
 
-    .panel, .quote-box {
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      background: rgba(255,255,255,0.8);
-      overflow: hidden;
-    }
-
     .panel {
       padding: 28px;
+      background: rgba(18, 24, 33, 0.9);
     }
 
     .panel p {
-      color: var(--ink-2);
-      line-height: 1.8;
       margin: 0;
+      color: var(--ink-2);
+      line-height: 1.85;
+      font-size: 1rem;
     }
 
     .feature-list {
@@ -421,16 +499,15 @@
     .mini-card {
       padding: 18px 16px;
       border-radius: 18px;
-      background: linear-gradient(180deg, var(--card-2), rgba(255,255,255,0.8));
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(217,179,108,0.14);
       color: var(--ink);
-      font-size: 0.96rem;
       line-height: 1.6;
     }
 
     .mini-card strong {
       display: block;
-      color: var(--accent);
+      color: var(--gold-2);
       font-size: 1.5rem;
       margin-bottom: 8px;
     }
@@ -439,25 +516,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #111827, #202c48, #3c2a7c);
-      color: white;
       padding: 30px 28px;
+      background: linear-gradient(135deg, #111722, #1e2532, #2a1b0d);
+      color: white;
     }
 
     blockquote {
       margin: 0;
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 1.2;
-      letter-spacing: -0.065em;
-      max-width: 440px;
+      max-width: 430px;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      line-height: 1.16;
+      letter-spacing: -0.07em;
     }
 
     .quote-box p {
       margin: 18px 0 0;
-      font-size: 0.8rem;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.78rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
     }
 
     .gallery-grid {
@@ -468,25 +545,25 @@
 
     .gallery-item {
       position: relative;
-      min-height: 190px;
-      border-radius: 22px;
+      min-height: 220px;
+      border-radius: 24px;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
       box-shadow: var(--shadow);
       display: flex;
       align-items: flex-end;
       padding: 18px;
-      font-weight: 700;
-      color: white;
       background-size: cover;
       background-position: center;
-      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      font-weight: 700;
     }
 
     .gallery-item::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+      background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.72));
     }
 
     .gallery-item span {
@@ -494,23 +571,20 @@
       z-index: 1;
     }
 
-    .gallery-item:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80'); }
-    .gallery-item:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=900&q=80'); }
-    .gallery-item:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80'); }
-    .gallery-item:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1541534401786-2077eed87a74?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=900&q=80'); }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 24px;
       align-items: stretch;
     }
 
     .form-box {
-      background: rgba(255,255,255,0.8);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
+      background: rgba(18, 24, 33, 0.9);
       padding: 24px;
     }
 
@@ -524,16 +598,17 @@
       color: var(--ink-2);
       font-weight: 700;
       font-size: 0.8rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(217,179,108,0.14);
       border-radius: 14px;
       padding: 14px 16px;
-      background: rgba(255,255,255,0.6);
       color: var(--ink);
       outline: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -541,12 +616,12 @@
 
     .form-group input:focus,
     .form-group textarea:focus {
-      border-color: rgba(95, 92, 233, 0.55);
-      box-shadow: 0 0 0 4px rgba(95, 92, 233, 0.09);
+      border-color: rgba(217,179,108,0.55);
+      box-shadow: 0 0 0 4px rgba(217,179,108,0.08);
     }
 
     .form-group textarea {
-      min-height: 140px;
+      min-height: 150px;
       resize: vertical;
     }
 
@@ -555,48 +630,50 @@
       border: 0;
       border-radius: 14px;
       padding: 15px 18px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #121212;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 18px 30px rgba(95, 92, 233, 0.22);
+      box-shadow: 0 18px 30px rgba(217,179,108,0.26);
       transition: transform 0.2s ease;
     }
 
-    .submit-btn:hover { transform: translateY(-2px); }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
 
     .success-msg {
       display: none;
       margin-top: 12px;
-      font-size: 0.94rem;
+      background: rgba(127,214,166,0.08);
+      border: 1px solid rgba(127,214,166,0.25);
       color: var(--success);
-      background: rgba(31, 170, 109, 0.08);
-      border: 1px solid rgba(31, 170, 109, 0.15);
       border-radius: 12px;
       padding: 12px 14px;
       font-weight: 700;
     }
 
     footer {
-      padding: 26px 0 44px;
-      color: var(--ink-2);
-      font-size: 0.9rem;
+      padding: 34px 0 52px;
+      color: var(--muted);
       text-align: center;
+      font-size: 0.92rem;
     }
 
     dialog {
       border: none;
-      border-radius: 24px;
       width: min(760px, calc(100% - 24px));
+      border-radius: 26px;
       padding: 0;
       overflow: hidden;
       background: #fff;
-      box-shadow: 0 26px 80px rgba(0,0,0,0.22);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.28);
     }
 
     dialog::backdrop {
-      background: rgba(11, 16, 32, 0.6);
+      background: rgba(0,0,0,0.6);
     }
 
     .dialog-inner {
@@ -606,44 +683,58 @@
 
     .dialog-image {
       width: 100%;
-      height: 320px;
+      height: 330px;
       object-fit: cover;
       display: block;
-      background: #dfe7f6;
+      background: #dde5f3;
     }
 
     .dialog-body {
       position: relative;
-      padding: 24px 24px 18px;
+      padding: 22px 22px 18px;
     }
 
     .dialog-body h3 {
-      margin: 0 0 12px;
-      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
       letter-spacing: -0.05em;
+      color: #111827;
     }
 
     .dialog-body p {
-      margin: 0 0 12px;
-      color: #333d4f;
+      margin: 0 0 8px;
+      color: #394761;
       line-height: 1.8;
       font-size: 1rem;
     }
 
     .close-btn {
       position: absolute;
-      right: 14px;
-      top: 14px;
-      border-radius: 999px;
+      top: 12px;
+      right: 12px;
       border: 0;
+      border-radius: 999px;
+      background: rgba(17,24,39,0.06);
       padding: 8px 12px;
       font-weight: 700;
       cursor: pointer;
-      background: rgba(17, 24, 39, 0.06);
+      color: #111827;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 980px) {
       .hero-inner,
+      .spotlight,
       .about-grid,
       .contact-grid {
         grid-template-columns: 1fr;
@@ -677,6 +768,10 @@
       .gallery-grid {
         grid-template-columns: 1fr;
       }
+
+      .spotlight-main {
+        min-height: 260px;
+      }
     }
   </style>
 </head>
@@ -700,7 +795,7 @@
   <main>
     <section class="hero" id="home">
       <div class="container hero-inner">
-        <div class="hero-copy">
+        <div class="hero-copy reveal">
           <div class="eyebrow">Celebrating India</div>
           <h1>Inspiring beyond limits.</h1>
           <p>
@@ -713,13 +808,13 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Athlete hero image">
-          <div class="hero-portrait"></div>
+        <div class="hero-visual reveal">
+          <div class="hero-portrait" aria-label="Hero image of an athlete"></div>
         </div>
       </div>
     </section>
 
-    <div class="container">
+    <div class="container reveal">
       <div class="stats-bar">
         <div class="stat"><strong>100+</strong><span>Stories covered</span></div>
         <div class="stat"><strong>15+</strong><span>Disciplines highlighted</span></div>
@@ -729,13 +824,31 @@
     </div>
 
     <section id="athletes">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-head">
           <div class="kicker">Featured athletes</div>
           <h2>Real people. Extraordinary journeys.</h2>
         </div>
 
-        <div class="athlete-grid">
+        <div class="spotlight">
+          <div class="spotlight-main">
+            <div class="content">
+              <div class="kicker" style="margin-bottom: 10px;">Spotlight</div>
+              <h3>Avani Lekhara</h3>
+              <p>First Indian woman to win a Paralympic gold medal, and a global example of precision, courage and composure under pressure.</p>
+            </div>
+          </div>
+
+          <div class="spotlight-side">
+            <div class="mini-stat"><strong>2</strong><span>Paralympic medals</span></div>
+            <div class="mini-stat"><strong>1</strong><span>World record holder</span></div>
+            <div class="mini-stat"><strong>5+</strong><span>International titles</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" style="margin-top: 30px;">
+        <div class="athlete-grid reveal">
           <article class="athlete-card">
             <div class="card-overlay">
               <div class="medal" aria-hidden="true">🎯</div>
@@ -806,7 +919,7 @@
     </section>
 
     <section id="about">
-      <div class="container about-grid">
+      <div class="container about-grid reveal">
         <div class="panel">
           <div class="kicker">About para-sports</div>
           <h2>What are para-athletes?</h2>
@@ -834,7 +947,7 @@
     </section>
 
     <section id="gallery">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-head">
           <div class="kicker">Gallery</div>
           <h2>Moments of determination</h2>
@@ -850,7 +963,7 @@
     </section>
 
     <section id="contact">
-      <div class="container contact-grid">
+      <div class="container contact-grid reveal">
         <div class="panel">
           <div class="kicker">Contact</div>
           <h2>Share a story or correction</h2>
@@ -905,33 +1018,33 @@
     const stories = {
       avani: {
         name: 'Avani Lekhara',
-        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Avani_Lekhara_in_2022.jpg',
-        story: 'Avani Lekhara is one of India’s most celebrated para-athletes, known for her calm focus, technical precision and remarkable ability to perform under pressure. Born in Jaipur, Rajasthan, she developed a deep passion for shooting and gradually built a career defined by discipline and resilience. At the Tokyo 2020 Paralympic Games, she made history by winning gold in the women’s 10m air rifle standing SH1 event, becoming the first Indian woman to win a Paralympic gold medal. Her success was no accident—it came from years of difficult training, constant refinement and a deep commitment to excellence. Beyond medals, Avani has become a symbol of possibility for athletes across India, especially women who are determined to compete and rise despite social and physical barriers. Her story remains an inspiring example of how talent, consistency and courage can create a lasting legacy.'
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80',
+        story: 'Avani Lekhara is one of India’s most celebrated para-athletes, known for her calm focus, technical precision and remarkable ability to perform under pressure. Born in Jaipur, Rajasthan, she developed a deep passion for shooting and gradually built a career defined by discipline and resilience. At the Tokyo 2020 Paralympic Games, she made history by winning gold in the women’s 10m air rifle standing SH1 event, becoming the first Indian woman to win a Paralympic gold medal. Her success was no accident—it came from years of difficult training, constant refinement and a deep commitment to excellence. Beyond medals, Avani has become a symbol of possibility for athletes across India, especially women who are determined to compete and rise despite social and physical barriers.'
       },
       sumit: {
         name: 'Sumit Antil',
-        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sumit_Antil_2.jpg',
-        story: 'Sumit Antil is one of the most formidable para-athletes in India and a standout performer in para javelin. His rise in sport reflects both natural talent and relentless work ethic. From early development to elite competition, he has consistently improved his technique, sharpened his focus and pushed the boundaries of what is expected in his event. At the Tokyo 2020 Paralympic Games, he won gold and established himself as one of India’s top para-athletes on the global stage. He later set world records and continued to dominate international competition, proving that excellence is earned through repetition, discipline and belief. Sumit’s story is not simply about medals—it is about what happens when a person refuses to accept limits and chooses to redefine them.'
+        image: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=900&q=80',
+        story: 'Sumit Antil is one of the most formidable para-athletes in India and a standout performer in para javelin. His rise in sport reflects both natural talent and relentless work ethic. From early development to elite competition, he has consistently improved his technique, sharpened his focus and pushed the boundaries of what is expected in his event. At the Tokyo 2020 Paralympic Games, he won gold and established himself as one of India’s top para-athletes on the global stage. He later set world records and continued to dominate international competition, proving that excellence is earned through repetition, discipline and belief.'
       },
       mariyappan: {
         name: 'Mariyappan Thangavelu',
-        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mariyappan_Thangavelu.jpg',
-        story: 'Mariyappan Thangavelu is one of the iconic names in Indian para-athletics. A high jumper by discipline, he made history by winning gold at the Rio 2016 Paralympic Games, a moment that instantly became a symbol of hope, pride and possibility for India. His journey has always depended on resilience, focus and the willingness to keep improving despite pressure and uncertainty. He has represented the country with confidence and has become a model for young athletes who see sport as a platform for dignity, recognition and purpose. Mariyappan’s career exemplifies the message that success is often built through setbacks, recovery and the courage to keep going.'
+        image: 'https://images.unsplash.com/photo-1541534401786-2077eed87a74?auto=format&fit=crop&w=900&q=80',
+        story: 'Mariyappan Thangavelu is one of the iconic names in Indian para-athletics. A high jumper by discipline, he made history by winning gold at the Rio 2016 Paralympic Games, a moment that instantly became a symbol of hope, pride and possibility for India. His journey has always depended on resilience, focus and the willingness to keep improving despite pressure and uncertainty. He has represented the country with confidence and has become a model for young athletes who see sport as a platform for dignity, recognition and purpose.'
       },
       deepa: {
         name: 'Deepa Malik',
-        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Deepa_Malik.jpg',
-        story: 'Deepa Malik is a pioneering figure in Indian para-sport and a symbol of strength, leadership and perseverance. She is best known for winning silver in shot put at the Rio 2016 Paralympic Games, becoming the first Indian woman to win a Paralympic medal. Her journey reflects a life shaped by discipline, self-belief and an unwavering determination to move forward despite barriers. Beyond her achievements on the field, Deepa has become an advocate for inclusion, visibility and equal opportunity in sport. Her story matters because it shows that athletic excellence and social empowerment can go hand in hand. She remains a powerful example of how sport can build confidence, challenge stereotypes and open new possibilities.'
+        image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80',
+        story: 'Deepa Malik is a pioneering figure in Indian para-sport and a symbol of strength, leadership and perseverance. She is best known for winning silver in shot put at the Rio 2016 Paralympic Games, becoming the first Indian woman to win a Paralympic medal. Her journey reflects a life shaped by discipline, self-belief and an unwavering determination to move forward despite barriers. Beyond her achievements on the field, Deepa has become an advocate for inclusion, visibility and equal opportunity in sport.'
       },
       bhavina: {
         name: 'Bhavina Patel',
-        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Smt._Bhavina_Patel_Table_Tennis_medalist.jpg',
-        story: 'Bhavina Patel has emerged as one of the most inspiring figures in Indian para table tennis. Her rise in the sport is a story of technical excellence, composure and the determination to compete at the highest level. At the Tokyo 2020 Paralympic Games, she won silver in women’s singles, bringing global attention to para table tennis in India and inspiring a new generation of players. Her performance highlighted the importance of practice, patience and confidence in high-pressure moments. Bhavina’s achievement has also helped build public awareness around para-sport, showing that excellence is not limited by ability and that skill can create extraordinary impact.'
+        image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80',
+        story: 'Bhavina Patel has emerged as one of the most inspiring figures in Indian para table tennis. Her rise in the sport is a story of technical excellence, composure and the determination to compete at the highest level. At the Tokyo 2020 Paralympic Games, she won silver in women’s singles, bringing global attention to para table tennis in India and inspiring a new generation of players. Her performance highlighted the importance of practice, patience and confidence in high-pressure moments.'
       },
       sheetal: {
         name: 'Sheetal Devi',
-        image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg',
-        story: 'Sheetal Devi is a rising star in Indian para archery and an exciting symbol of the next generation of champions. Her skill, composure and ability to perform under demanding conditions have already made her a source of inspiration for younger athletes. At the Paris 2024 Paralympic Games, she won bronze in the women’s individual compound open event, adding a remarkable milestone to her growing career. Her story reflects the power of determination and the importance of a strong support system in helping athletes reach elite levels. Sheetal’s rise shows that the future of Indian para-sport is bright, driven by talent, discipline and the courage to challenge expectations.'
+        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80',
+        story: 'Sheetal Devi is a rising star in Indian para archery and an exciting symbol of the next generation of champions. Her skill, composure and ability to perform under demanding conditions have already made her a source of inspiration for younger athletes. At the Paris 2024 Paralympic Games, she won bronze in the women’s individual compound open event, adding a remarkable milestone to her growing career. Her story reflects the power of determination and the importance of a strong support system in helping athletes reach elite levels.'
       }
     };
 
@@ -958,6 +1071,18 @@
       document.getElementById('successMsg').style.display = 'block';
       this.reset();
     });
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => observer.observe(item));
   </script>
 </body>
 </html>
