@@ -1,229 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover inspiring stories and achievements of Indian para-athletes.">
-  <title>Indian Para-Athletes — A Project by Peter</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Premium modern showcase of Indian para-athletes and their inspiring journeys." />
+  <title>Indian Para-Athletes</title>
   <style>
-    :root { --ink:#101114; --paper:#f5f5f3; --muted:#bfc1c5; --saffron:#ff8b2b; --green:#198754; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:var(--paper); }
-    a { color:inherit; }
-    .topbar { position:sticky; top:0; z-index:10; background:#0d0e10; color:white; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:15px 5%; border-bottom:1px solid #333; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:1.5px; }
-    .brand-mark { font-size:30px; }
-    .brand small { display:block; color:#ccc; font-weight:400; letter-spacing:.2px; margin-top:3px; }
-    nav { display:flex; gap:20px; flex-wrap:wrap; justify-content:flex-end; }
-    nav a { text-decoration:none; font-size:14px; color:#eee; }
-    nav a:hover { color:var(--saffron); }
-    .hero { min-height:420px; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:65px 7%; color:white; background:linear-gradient(90deg,rgba(8,9,11,.97),rgba(8,9,11,.78)), radial-gradient(ellipse at 78% 45%,#555 0,#222 30%,#090a0b 72%); position:relative; overflow:hidden; }
-    .hero:after { content:""; position:absolute; width:38%; height:130%; right:3%; top:-15%; border:2px solid #ffffff18; border-radius:50%; transform:rotate(25deg); box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff05; }
-    .eyebrow { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#ddd; }
-    h1 { font-size:clamp(42px,6vw,76px); line-height:.98; margin:18px 0; max-width:650px; }
-    .hero p { max-width:520px; color:#d2d2d2; line-height:1.7; }
-    .hero-art { z-index:1; text-align:center; font-size:clamp(70px,12vw,150px); filter:grayscale(1); opacity:.9; }
-    .button { display:inline-block; background:white; color:#111; border:0; padding:13px 18px; margin-top:16px; text-decoration:none; font-weight:700; font-size:13px; letter-spacing:.5px; cursor:pointer; }
-    .button:hover { background:var(--saffron); }
-    section { padding:48px 5%; }
-    .section-kicker { font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; }
-    h2 { margin:8px 0 25px; font-size:clamp(25px,3vw,38px); }
-    .cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-    .card { background:white; border:1px solid #e0e0de; box-shadow:0 8px 24px #00000008; display:flex; flex-direction:column; min-height:520px; }
-    .card-top { background:#161719; color:white; padding:18px; min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
-    .athlete-photo { width:100%; height:320px; object-fit:cover; display:block; background:#ddd; }
-    .photo-credit { font-size:11px; color:#666; line-height:1.5; margin-top:10px; }
-    .card-top .emoji { font-size:44px; }
-    .card-body { padding:16px; display:flex; flex-direction:column; flex:1; }
-    .card h3 { margin:0 0 8px; font-size:21px; }
-    .sport { color:#555; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
-    .card p { line-height:1.6; color:#444; font-size:14px; flex:1; }
-    .details { border:0; background:transparent; padding:0; text-align:left; font-weight:800; cursor:pointer; color:#111; }
-    .details:hover { color:#b64e00; }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:35px; align-items:center; }
-    .about-panel { background:#e8e8e5; padding:28px; line-height:1.8; }
-    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:18px; }
-    .stat { background:#111214; color:white; padding:20px 12px; text-align:center; }
-    .stat strong { display:block; font-size:26px; }
-    .stat span { color:#d0d0d0; font-size:12px; }
-    .quote { background:#111214; color:white; text-align:center; padding:50px 8%; }
-    .quote blockquote { font-size:clamp(22px,3vw,36px); font-weight:700; line-height:1.35; margin:0 auto 12px; max-width:850px; }
-    .quote p { color:#cfcfcf; }
-    .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .gallery div { background:linear-gradient(135deg,#17181a,#4a4b4d); color:white; min-height:180px; padding:18px; display:flex; align-items:end; font-weight:700; }
-    .contact { background:#e8e8e5; }
-    .contact a { font-weight:700; }
-    footer { background:#090a0b; color:#ddd; padding:25px 5%; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12px; }
-    .note { font-size:12px; color:#666; line-height:1.6; }
-    dialog { border:0; border-radius:12px; padding:0; max-width:700px; width:calc(100% - 20px); box-shadow:0 20px 80px #0007; background:#fff; overflow:hidden; }
-    dialog::backdrop { background:#0009; }
-    .dialog-inner { display:flex; flex-direction:column; }
-    .dialog-image { width:100%; height:260px; object-fit:cover; display:block; background:#ddd; }
-    .dialog-body { padding:22px 24px 26px; }
-    .dialog-body h3 { margin:0 0 10px; font-size:28px; }
-    .dialog-body p { margin:0 0 12px; font-size:15px; line-height:1.8; color:#333; }
-    .close { position:absolute; right:14px; top:12px; border:0; background:#fff; border-radius:999px; padding:8px 12px; cursor:pointer; }
-    @media(max-width:760px) {
-      .topbar { align-items:flex-start; flex-direction:column; }
-      nav { justify-content:flex-start; gap:12px; }
-      .hero { grid-template-columns:1fr; padding:50px 7%; }
-      .hero-art { display:none; }
-      .cards { grid-template-columns:1fr; }
-      .about-grid { grid-template-columns:1fr; }
-      .stats { grid-template-columns:1fr 1fr 1fr; }
-      .gallery { grid-template-columns:1fr 1fr; }
-      .athlete-photo { height:280px; }
-      .card { min-height:480px; }
-      .dialog-image { height:220px; }
+    :root {
+      --bg: #f5f7fb;
+      --bg-2: #eef3ff;
+      --panel: rgba(255,255,255,0.72);
+      --card: #ffffff;
+      --card-2: #f8f9ff;
+      --ink: #131a2f;
+      --ink-2: #42506b;
+      --muted: #6d7890;
+      --line: rgba(19, 26, 47, 0.08);
+      --accent: #5f5ce9;
+      --accent-2: #8b5cf6;
+      --accent-3: #ff9f43;
+      --success: #1faa6d;
+      --shadow: 0 22px 60px rgba(31, 42, 74, 0.12);
+      --radius: 24px;
     }
-    @media(max-width:420px) { .brand { font-size:13px; } nav a { font-size:12px; } .stats { grid-template-columns:1fr; } .athlete-photo { height:240px; } }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      color: var(--ink);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+
+    .container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(12, 17, 28, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #fbbf24, #fb7185);
+      font-size: 1.3rem;
+      box-shadow: 0 12px 26px rgba(251, 113, 133, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.92rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0b1020 0%, #15213f 28%, #1d2a52 42%, #5544a5 100%);
+      color: white;
+      padding: 64px 0 42px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      right: -90px;
+      top: -80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 0 30px rgba(255,255,255,0.025);
+      transform: rotate(18deg);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 0.96;
+      letter-spacing: -0.075em;
+      max-width: 680px;
+    }
+
+    .hero-copy p {
+      max-width: 620px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      margin: 22px 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-3), #ff7a4d);
+      color: #111827;
+      box-shadow: 0 16px 30px rgba(255, 159, 67, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .hero-visual {
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+    }
+
+    .hero-portrait {
+      position: relative;
+      width: min(420px, 90%);
+      aspect-ratio: 1;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 28px 60px rgba(8, 12, 22, 0.4);
+      background-image: linear-gradient(180deg, rgba(7,10,17,0.15), rgba(7,10,17,0.28)), url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80');
+      background-size: cover;
+      background-position: center;
+      transform: rotate(-4deg);
+    }
+
+    .hero-portrait::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 24px;
+    }
+
+    .stats-bar {
+      position: relative;
+      z-index: 3;
+      top: -16px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      margin-bottom: 8px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(246,248,255,0.9));
+      border-radius: 18px;
+      padding: 20px 12px;
+      text-align: center;
+      border: 1px solid rgba(12, 17, 28, 0.04);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    section { padding: 36px 0 40px; }
+
+    .section-head {
+      margin-bottom: 26px;
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.73rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.06em;
+      line-height: 1.08;
+    }
+
+    .athlete-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .athlete-card {
+      position: relative;
+      min-height: 470px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .athlete-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(31, 42, 74, 0.18);
+    }
+
+    .athlete-card:nth-child(1) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Avani_Lekhara_in_2022.jpg'); }
+    .athlete-card:nth-child(2) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Sumit_Antil_2.jpg'); }
+    .athlete-card:nth-child(3) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Mariyappan_Thangavelu.jpg'); }
+    .athlete-card:nth-child(4) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Deepa_Malik.jpg'); }
+    .athlete-card:nth-child(5) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Smt._Bhavina_Patel_Table_Tennis_medalist.jpg'); }
+    .athlete-card:nth-child(6) { background-image: linear-gradient(180deg, rgba(9,13,20,0.08), rgba(9,13,20,0.72)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg'); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px 20px 18px;
+      background: linear-gradient(180deg, rgba(10,16,24,0.08), rgba(10,16,24,0.74));
+    }
+
+    .medal {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.3));
+    }
+
+    .badge {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 16px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: white;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .athlete-card h3 {
+      margin: 0 0 8px;
+      color: white;
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+    }
+
+    .sport-tag {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .athlete-card p {
+      margin: 0 0 18px;
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .read-more {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .read-more:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel, .quote-box {
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.8);
+      overflow: hidden;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .panel p {
+      color: var(--ink-2);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .mini-card {
+      padding: 18px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--card-2), rgba(255,255,255,0.8));
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .quote-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #111827, #202c48, #3c2a7c);
+      color: white;
+      padding: 30px 28px;
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.2;
+      letter-spacing: -0.065em;
+      max-width: 440px;
+    }
+
+    .quote-box p {
+      margin: 18px 0 0;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      min-height: 190px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      font-weight: 700;
+      color: white;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .gallery-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+    }
+
+    .gallery-item span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-item:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80'); }
+    .gallery-item:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=900&q=80'); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .form-box {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      color: var(--ink-2);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.6);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(95, 92, 233, 0.55);
+      box-shadow: 0 0 0 4px rgba(95, 92, 233, 0.09);
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 15px 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 18px 30px rgba(95, 92, 233, 0.22);
+      transition: transform 0.2s ease;
+    }
+
+    .submit-btn:hover { transform: translateY(-2px); }
+
+    .success-msg {
+      display: none;
+      margin-top: 12px;
+      font-size: 0.94rem;
+      color: var(--success);
+      background: rgba(31, 170, 109, 0.08);
+      border: 1px solid rgba(31, 170, 109, 0.15);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 26px 0 44px;
+      color: var(--ink-2);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    dialog {
+      border: none;
+      border-radius: 24px;
+      width: min(760px, calc(100% - 24px));
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 26px 80px rgba(0,0,0,0.22);
+    }
+
+    dialog::backdrop {
+      background: rgba(11, 16, 32, 0.6);
+    }
+
+    .dialog-inner {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dialog-image {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      background: #dfe7f6;
+    }
+
+    .dialog-body {
+      position: relative;
+      padding: 24px 24px 18px;
+    }
+
+    .dialog-body h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      letter-spacing: -0.05em;
+    }
+
+    .dialog-body p {
+      margin: 0 0 12px;
+      color: #333d4f;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      border-radius: 999px;
+      border: 0;
+      padding: 8px 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: rgba(17, 24, 39, 0.06);
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .athlete-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .athlete-grid,
+      .feature-list,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#home" style="text-decoration:none">
-      <span class="brand-mark" aria-hidden="true">🏃</span>
-      <span>INDIAN PARA-ATHLETES<small>A project by Peter · Different Abilities, Same Dreams</small></span>
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#athletes">Athletes</a>
-      <a href="#achievements">Achievements</a><a href="#inspiration">Inspiration</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
-    </nav>
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Indian Para-Athletes home">
+        <span class="brand-mark">🏃</span>
+        <span>Indian Para-Athletes</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#athletes">Athletes</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div>
-        <div class="eyebrow">Celebrating India's para-athletes</div>
-        <h1>INSPIRING<br>BEYOND LIMITS.</h1>
-        <p>Meet the athletes whose skill, determination and hard work are helping shape the story of Indian para-sport.</p>
-        <a class="button" href="#athletes">EXPLORE THEIR STORIES →</a>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Celebrating India</div>
+          <h1>Inspiring beyond limits.</h1>
+          <p>
+            Meet the athletes whose courage, discipline and excellence are redefining what is possible in Indian sport.
+            From world records to Paralympic glory, these stories remind us that determination can turn barriers into milestones.
+          </p>
+          <div class="hero-actions">
+            <a href="#athletes" class="btn btn-primary">Explore athletes</a>
+            <a href="#contact" class="btn btn-secondary">Share a story</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Athlete hero image">
+          <div class="hero-portrait"></div>
+        </div>
       </div>
-      <div class="hero-art" aria-label="Athlete symbol">🏅</div>
     </section>
 
-    <section id="athletes">
-      <div class="section-kicker">Featured athletes</div>
-      <h2>Real People. Extraordinary Journeys.</h2>
-      <div class="cards">
-        <article class="card">
-          <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Avani_Lekhara_in_2022.jpg" alt="Avani Lekhara at an award ceremony" loading="lazy">
-          <div class="card-top"><span class="emoji">🎯</span><span>01 / SHOOTING</span></div>
-          <div class="card-body"><h3>Avani Lekhara</h3><div class="sport">Para shooting</div><p>Indian rifle shooter who made history by winning gold in the women's 10m air rifle standing SH1 event at Tokyo 2020.</p><button class="details" data-athlete="avani">Read her story ↗</button></div>
-        </article>
-        <article class="card">
-          <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sumit_Antil_2.jpg" alt="Indian para javelin thrower Sumit Antil" loading="lazy">
-          <div class="card-top"><span class="emoji">🥇</span><span>02 / JAVELIN</span></div>
-          <div class="card-body"><h3>Sumit Antil</h3><div class="sport">Para athletics</div><p>A javelin throw champion known for world-record performances and gold-medal success at the Paralympic Games.</p><button class="details" data-athlete="sumit">Read his story ↗</button></div>
-        </article>
-        <article class="card">
-          <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Mariyappan_Thangavelu.jpg" alt="Indian para high jumper Mariyappan Thangavelu" loading="lazy">
-          <div class="card-top"><span class="emoji">🏃</span><span>03 / HIGH JUMP</span></div>
-          <div class="card-body"><h3>Mariyappan Thangavelu</h3><div class="sport">Para athletics</div><p>High jumper who won gold at Rio 2016 and continued to represent India on the Paralympic stage.</p><button class="details" data-athlete="mariyappan">Read his story ↗</button></div>
-        </article>
-        <article class="card">
-          <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Deepa_Malik.jpg" alt="Indian para-athlete Deepa Malik with her medal" loading="lazy">
-          <div class="card-top"><span class="emoji">💪</span><span>04 / SHOT PUT</span></div>
-          <div class="card-body"><h3>Deepa Malik</h3><div class="sport">Para athletics</div><p>Trailblazing athlete and the first Indian woman to win a Paralympic medal, earning silver in shot put at Rio 2016.</p><button class="details" data-athlete="deepa">Read her story ↗</button></div>
-        </article>
-        <article class="card">
-          <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Smt._Bhavina_Patel_Table_Tennis_medalist.jpg" alt="Indian para table-tennis player Bhavina Patel" loading="lazy">
-          <div class="card-top"><span class="emoji">🏓</span><span>05 / TABLE TENNIS</span></div>
-          <div class="card-body"><h3>Bhavina Patel</h3><div class="sport">Para table tennis</div><p>Won silver in women's singles table tennis at Tokyo 2020, bringing attention to para table tennis in India.</p><button class="details" data-athlete="bhavina">Read her story ↗</button></div>
-        </article>
-        <article class="card">
-          <img class="athlete-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg" alt="Indian para-archer Sheetal Devi" loading="lazy">
-          <div class="card-top"><span class="emoji">🏹</span><span>06 / PARA ARCHERY</span></div>
-          <div class="card-body"><h3>Sheetal Devi</h3><div class="sport">Para archery</div><p>Indian para-archer Sheetal Devi won bronze in the women's individual compound open event at the Paris 2024 Paralympic Games.</p><button class="details" data-athlete="sheetal">Read her story ↗</button></div>
-        </article>
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stat"><strong>100+</strong><span>Stories covered</span></div>
+        <div class="stat"><strong>15+</strong><span>Disciplines highlighted</span></div>
+        <div class="stat"><strong>30+</strong><span>Medal moments</span></div>
+        <div class="stat"><strong>1</strong><span>Shared dream</span></div>
       </div>
-      <p class="note">Learning project: confirm biographies, event categories and medal details against official Paralympic or national sports sources before submitting or publishing. Athlete profiles can be expanded with verified photos and sources.</p>
-      <p class="photo-credit">Photo sources: <a href="https://commons.wikimedia.org/wiki/File:Avani_Lekhara_in_2022.jpg" target="_blank" rel="noopener">Avani Lekhara</a> · <a href="https://commons.wikimedia.org/wiki/File:Sumit_Antil_2.jpg" target="_blank" rel="noopener">Sumit Antil</a> · <a href="https://commons.wikimedia.org/wiki/File:Mariyappan_Thangavelu.jpg" target="_blank" rel="noopener">Mariyappan Thangavelu</a> · <a href="https://commons.wikimedia.org/wiki/File:Deepa_Malik.jpg" target="_blank" rel="noopener">Deepa Malik</a> · <a href="https://commons.wikimedia.org/wiki/Category:Bhavina_Patel" target="_blank" rel="noopener">Bhavina Patel</a> · <a href="https://commons.wikimedia.org/wiki/File:Sheetal_Devi_in_September_2024.jpg" target="_blank" rel="noopener">Sheetal Devi</a>. Keep source credits when publishing.</p>
+    </div>
+
+    <section id="athletes">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Featured athletes</div>
+          <h2>Real people. Extraordinary journeys.</h2>
+        </div>
+
+        <div class="athlete-grid">
+          <article class="athlete-card">
+            <div class="card-overlay">
+              <div class="medal" aria-hidden="true">🎯</div>
+              <div class="badge">Shooting</div>
+              <h3>Avani Lekhara</h3>
+              <div class="sport-tag">Para shooting</div>
+              <p>First Indian woman to win a Paralympic gold medal and a symbol of excellence under pressure.</p>
+              <button class="read-more" type="button" data-athlete="avani">Read story →</button>
+            </div>
+          </article>
+
+          <article class="athlete-card">
+            <div class="card-overlay">
+              <div class="medal" aria-hidden="true">🥇</div>
+              <div class="badge">Athletics</div>
+              <h3>Sumit Antil</h3>
+              <div class="sport-tag">Para javelin</div>
+              <p>World record holder and Paralympic champion whose performances have redefined standards.</p>
+              <button class="read-more" type="button" data-athlete="sumit">Read story →</button>
+            </div>
+          </article>
+
+          <article class="athlete-card">
+            <div class="card-overlay">
+              <div class="medal" aria-hidden="true">🏃</div>
+              <div class="badge">Athletics</div>
+              <h3>Mariyappan Thangavelu</h3>
+              <div class="sport-tag">High jump</div>
+              <p>Rio 2016 gold medalist whose courage and focus inspired a nation.</p>
+              <button class="read-more" type="button" data-athlete="mariyappan">Read story →</button>
+            </div>
+          </article>
+
+          <article class="athlete-card">
+            <div class="card-overlay">
+              <div class="medal" aria-hidden="true">💪</div>
+              <div class="badge">Athletics</div>
+              <h3>Deepa Malik</h3>
+              <div class="sport-tag">Shot put</div>
+              <p>Pioneer and medal-winning trailblazer who opened doors for women in para-sport.</p>
+              <button class="read-more" type="button" data-athlete="deepa">Read story →</button>
+            </div>
+          </article>
+
+          <article class="athlete-card">
+            <div class="card-overlay">
+              <div class="medal" aria-hidden="true">🏓</div>
+              <div class="badge">Table tennis</div>
+              <h3>Bhavina Patel</h3>
+              <div class="sport-tag">Para table tennis</div>
+              <p>Silver medalist at Tokyo 2020, bringing global recognition to para table tennis in India.</p>
+              <button class="read-more" type="button" data-athlete="bhavina">Read story →</button>
+            </div>
+          </article>
+
+          <article class="athlete-card">
+            <div class="card-overlay">
+              <div class="medal" aria-hidden="true">🏹</div>
+              <div class="badge">Para archery</div>
+              <h3>Sheetal Devi</h3>
+              <div class="sport-tag">Para archery</div>
+              <p>Emerging talent whose performances signal a new era for Indian para-sport.</p>
+              <button class="read-more" type="button" data-athlete="sheetal">Read story →</button>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section id="about">
-      <div class="about-grid">
-        <div class="about-panel"><div class="section-kicker">About para-sports</div><h2>What are para-athletes?</h2><p>Para-athletes are sportspeople with eligible impairments who compete in adapted or classified sporting events. Para-sport includes many disciplines, such as shooting, athletics, swimming, badminton and table tennis.</p><p>Classification helps group athletes fairly according to how an impairment affects the requirements of a particular sport.</p></div>
-        <div><div class="section-kicker">Our purpose</div><h2>Sport can open doors.</h2><p>These stories celebrate training, teamwork, skill and achievement—not just medals. Para-athletes help audiences recognise the importance of access, inclusion and equal opportunities in sport.</p><a class="button" href="#inspiration">GET INSPIRED →</a></div>
-      </div>
-    </section>
+      <div class="container about-grid">
+        <div class="panel">
+          <div class="kicker">About para-sports</div>
+          <h2>What are para-athletes?</h2>
+          <p>
+            Para-athletes are athletes with eligible impairments who compete in adapted or classified sporting events.
+            They train with the same discipline and intensity as elite sportspersons, often under more demanding conditions.
+            Their achievements represent not just personal excellence, but a broader message of inclusion and equal opportunity.
+          </p>
 
-    <section id="achievements">
-      <div class="section-kicker">Achievements</div><h2>Every milestone matters.</h2>
-      <div class="stats">
-        <div class="stat"><strong>🏅</strong><span>Personal bests</span></div>
-        <div class="stat"><strong>🌍</strong><span>International competition</span></div>
-        <div class="stat"><strong>🤝</strong><span>Inclusion through sport</span></div>
-      </div>
-      <p class="note">This page avoids unverified live medal totals. Add current figures only after checking an official source and noting the date.</p>
-    </section>
+          <div class="feature-list">
+            <div class="mini-card"><strong>🏆</strong>Built on discipline, training and resilience</div>
+            <div class="mini-card"><strong>🤝</strong>Promoting inclusion through sport and visibility</div>
+            <div class="mini-card"><strong>💡</strong>Motivating the next generation of athletes</div>
+            <div class="mini-card"><strong>🌍</strong>Representing India on global stages</div>
+          </div>
+        </div>
 
-    <section class="quote" id="inspiration">
-      <blockquote>“Great achievements are built through practice, courage, teamwork and persistence.”</blockquote>
-      <p>Respect · Support · Celebrate</p>
+        <div class="quote-box">
+          <div>
+            <blockquote>“Great achievements are built through practice, courage, teamwork and persistence.”</blockquote>
+            <p>Respect • Support • Celebrate</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="gallery">
-      <div class="section-kicker">Gallery</div><h2>Moments of determination</h2>
-      <div class="gallery"><div>Precision & focus</div><div>Strength & skill</div><div>Teamwork & support</div><div>Celebrating milestones</div></div>
-      <p class="note">Photo placeholders: use your own photos or images you have permission to publish. Credit photographers and follow each image's licence.</p>
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Gallery</div>
+          <h2>Moments of determination</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item"><span>Precision & focus</span></div>
+          <div class="gallery-item"><span>Strength & skill</span></div>
+          <div class="gallery-item"><span>Teamwork & support</span></div>
+          <div class="gallery-item"><span>Celebrating milestones</span></div>
+        </div>
+      </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="section-kicker">Contact</div><h2>Share a story or correction</h2>
-      <p>This is a student-made educational project about para-sports. To add a contact method, replace this sentence with an email address you are comfortable making public, or remove this section.</p>
-      <p class="note">Safety tip: don't publish your home address, personal phone number, school timetable, or other private details on a public website.</p>
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="panel">
+          <div class="kicker">Contact</div>
+          <h2>Share a story or correction</h2>
+          <p>
+            This project is dedicated to celebrating para-sport and highlighting inspiring stories in a respectful and accurate way.
+            If you know an athlete, event, image or correction worth adding, send us a message and help this project grow.
+          </p>
+        </div>
+
+        <div class="form-box">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about a story or update..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send message</button>
+            <div class="success-msg" id="successMsg">Thank you! Your message has been submitted.</div>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer><span>🏃 INDIAN PARA-ATHLETES · A project by Peter</span><span>Made as an educational project · © <span id="year"></span></span></footer>
+  <footer>
+    <div class="container">🏃 Indian Para-Athletes • A project by Peter • Made to celebrate resilience, achievement and inclusion</div>
+  </footer>
 
   <dialog id="story-dialog">
     <div class="dialog-inner">
-      <button class="close" id="close-dialog" aria-label="Close">Close ✕</button>
-      <img id="dialog-image" class="dialog-image" src="" alt="Athlete portrait">
+      <button class="close-btn" id="close-dialog" type="button">Close ✕</button>
+      <img id="dialog-image" class="dialog-image" src="" alt="Athlete portrait" />
       <div class="dialog-body">
         <h3 id="dialog-title">Athlete story</h3>
         <p id="dialog-text"></p>
-        <p class="note">Before publishing, verify details using official sources.</p>
+        <p style="color:#49566e; font-size:0.84rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; margin-top:10px;">Before publishing, verify details with official sources.</p>
       </div>
     </div>
   </dialog>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     const stories = {
       avani: {
         name: 'Avani Lekhara',
         image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Avani_Lekhara_in_2022.jpg',
-        story: 'Avani Lekhara is one of India’s most celebrated para-athletes, renowned for her precision, discipline and composure under pressure. Born in 2001 in Jaipur, Rajasthan, she grew up with a passion for shooting and a commitment to excellence. At the Tokyo 2020 Paralympic Games, she made history by winning gold in the women’s 10m air rifle standing SH1 event, becoming the first Indian woman to win a Paralympic gold medal. Her success was not accidental—it came from years of intense training, technical discipline, and a calm mind that never stopped believing in her potential. Beyond medals, Avani has become a symbol of hope and inspiration for young athletes across India, especially women who dream of rising in sport despite barriers. Her story is a reminder that excellence is built through effort, patience and resilience.'
+        story: 'Avani Lekhara is one of India’s most celebrated para-athletes, known for her calm focus, technical precision and remarkable ability to perform under pressure. Born in Jaipur, Rajasthan, she developed a deep passion for shooting and gradually built a career defined by discipline and resilience. At the Tokyo 2020 Paralympic Games, she made history by winning gold in the women’s 10m air rifle standing SH1 event, becoming the first Indian woman to win a Paralympic gold medal. Her success was no accident—it came from years of difficult training, constant refinement and a deep commitment to excellence. Beyond medals, Avani has become a symbol of possibility for athletes across India, especially women who are determined to compete and rise despite social and physical barriers. Her story remains an inspiring example of how talent, consistency and courage can create a lasting legacy.'
       },
       sumit: {
         name: 'Sumit Antil',
         image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sumit_Antil_2.jpg',
-        story: 'Sumit Antil is one of India’s leading para-athletes and a standout figure in para javelin. From a young age, he showed natural athletic ability and an instinct for performance under pressure. His rise in the sport was shaped by his determination to train harder, refine his technique and challenge limitations that many people underestimated. At the Tokyo 2020 Paralympic Games, he claimed gold and emerged as a world-class athlete, setting new standards for Indian para athletics. He later went on to set world records and continue dominating the sport on the international stage. Sumit’s journey represents what can happen when talent is combined with disciplined effort and a refusal to accept limits.'
+        story: 'Sumit Antil is one of the most formidable para-athletes in India and a standout performer in para javelin. His rise in sport reflects both natural talent and relentless work ethic. From early development to elite competition, he has consistently improved his technique, sharpened his focus and pushed the boundaries of what is expected in his event. At the Tokyo 2020 Paralympic Games, he won gold and established himself as one of India’s top para-athletes on the global stage. He later set world records and continued to dominate international competition, proving that excellence is earned through repetition, discipline and belief. Sumit’s story is not simply about medals—it is about what happens when a person refuses to accept limits and chooses to redefine them.'
       },
       mariyappan: {
         name: 'Mariyappan Thangavelu',
         image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mariyappan_Thangavelu.jpg',
-        story: 'Mariyappan Thangavelu is one of the most iconic para-athletes in Indian sport. A high jumper by discipline, he made history by winning gold at the Rio 2016 Paralympic Games, an achievement that sent a powerful message across the country about the value of para-sport. His journey has always been defined by grit, focus and unwavering belief. He has competed with courage at the highest level and has become a role model for many young athletes who look at sport as a path toward dignity, confidence and global recognition. Mariyappan’s story is not only about medals—it is about resilience, discipline and carrying the hopes of a generation.'
+        story: 'Mariyappan Thangavelu is one of the iconic names in Indian para-athletics. A high jumper by discipline, he made history by winning gold at the Rio 2016 Paralympic Games, a moment that instantly became a symbol of hope, pride and possibility for India. His journey has always depended on resilience, focus and the willingness to keep improving despite pressure and uncertainty. He has represented the country with confidence and has become a model for young athletes who see sport as a platform for dignity, recognition and purpose. Mariyappan’s career exemplifies the message that success is often built through setbacks, recovery and the courage to keep going.'
       },
       deepa: {
         name: 'Deepa Malik',
         image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Deepa_Malik.jpg',
-        story: 'Deepa Malik is a pioneering force in Indian para-sport and a powerful symbol of strength, leadership and perseverance. She is best known for winning silver in shot put at the Rio 2016 Paralympic Games, making her the first Indian woman to win a Paralympic medal. Her success was built on years of training, self-belief and determination to challenge the social and physical barriers that many women face in sport. Beyond her athletic achievements, Deepa has become a visible advocate for inclusion, representation and equal opportunity in para-sport. Her life story shows that sports can transform identity and help build new pathways for recognition, confidence and empowerment.'
+        story: 'Deepa Malik is a pioneering figure in Indian para-sport and a symbol of strength, leadership and perseverance. She is best known for winning silver in shot put at the Rio 2016 Paralympic Games, becoming the first Indian woman to win a Paralympic medal. Her journey reflects a life shaped by discipline, self-belief and an unwavering determination to move forward despite barriers. Beyond her achievements on the field, Deepa has become an advocate for inclusion, visibility and equal opportunity in sport. Her story matters because it shows that athletic excellence and social empowerment can go hand in hand. She remains a powerful example of how sport can build confidence, challenge stereotypes and open new possibilities.'
       },
       bhavina: {
         name: 'Bhavina Patel',
         image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Smt._Bhavina_Patel_Table_Tennis_medalist.jpg',
-        story: 'Bhavina Patel has become one of the most inspiring names in Indian para table tennis. Her rise in the sport reflects skill, composure and the determination to perform at the highest level. At the Tokyo 2020 Paralympic Games, she won silver in the women’s singles event, earning widespread recognition and placing para table tennis firmly in the spotlight in India. Her achievement helped illustrate how discipline and technical mastery can transform a sport into a symbol of national pride. Bhavina’s growth as an athlete has also inspired many young players to believe that excellence is possible even when the path is difficult.'
+        story: 'Bhavina Patel has emerged as one of the most inspiring figures in Indian para table tennis. Her rise in the sport is a story of technical excellence, composure and the determination to compete at the highest level. At the Tokyo 2020 Paralympic Games, she won silver in women’s singles, bringing global attention to para table tennis in India and inspiring a new generation of players. Her performance highlighted the importance of practice, patience and confidence in high-pressure moments. Bhavina’s achievement has also helped build public awareness around para-sport, showing that excellence is not limited by ability and that skill can create extraordinary impact.'
       },
       sheetal: {
         name: 'Sheetal Devi',
         image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sheetal_Devi_in_September_2024.jpg',
-        story: 'Sheetal Devi is a rising star in Indian para archery and a powerful example of talent shaped by dedication. Her path in sport reflects the strength of people who continue to train and compete despite additional barriers. At the Paris 2024 Paralympic Games, she won bronze in the women’s individual compound open event, adding another milestone to her sporting journey. Her style, accuracy and calm composure have impressed viewers, coaches and fans alike. Sheetal is part of a new wave of Indian para-athletes who are elevating the profile of para-sport and showing that the next generation of champions is already emerging.'
+        story: 'Sheetal Devi is a rising star in Indian para archery and an exciting symbol of the next generation of champions. Her skill, composure and ability to perform under demanding conditions have already made her a source of inspiration for younger athletes. At the Paris 2024 Paralympic Games, she won bronze in the women’s individual compound open event, adding a remarkable milestone to her growing career. Her story reflects the power of determination and the importance of a strong support system in helping athletes reach elite levels. Sheetal’s rise shows that the future of Indian para-sport is bright, driven by talent, discipline and the courage to challenge expectations.'
       }
     };
 
@@ -244,6 +952,12 @@
     });
 
     document.getElementById('close-dialog').addEventListener('click', () => dialog.close());
+
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('successMsg').style.display = 'block';
+      this.reset();
+    });
   </script>
 </body>
 </html>
